@@ -1,0 +1,71 @@
+[general]
+name=QGIS Ledger
+qgisMinimumVersion=3.0
+description=QGIS Ledger \u00E8 un plugin di versionamento ed esplorazione cronologica locale dei livelli vettoriali. Salva i commit, torna indietro nel tempo e naviga nello storico in modo isolato per utente. Supporto Nextcloud integrato.
+version=2.6.0
+author=Dott. Sarino Alfonso Grande
+email=info@sinocloud.itgrande@gmail.com
+
+about=Il plugin crea un sistema di gestione versioni locale e diff visivo stile "Git" per layer QGIS e interi layout di progetto. Supporta l'auto-commit dei layer, la comparazione cronologica e produce pacchetti GeoPackage portatili da inoltrare al proprio team tramite Nextcloud o altri storage. Works on local GeoPackage files or shared network folders (NAS). No external dependencies required. Uses only Python standard library and PyQGIS/Qt.
+
+homepage=https://sinocloud.it
+repository=https://github.com/sag1687/qgis-ledger
+tracker=https://github.com/sag1687/qgis-ledger/issues
+hasProcessingProvider=no
+
+changelog=
+    2.5.0 - Nextcloud File Browser integrato:
+      * Aggiunto pannello dock "☁️ Browser Nextcloud" direttamente nell'interfaccia grafica del plugin.
+      * Navigazione cartelle con doppio click, torna indietro con il pulsante ⬆.
+      * Operazioni complete: Nuova Cartella, Rinomina, Elimina, Carica File (upload), Scarica File (download).
+      * Menu contestuale (tasto destro) con tutte le azioni disponibili.
+      * Client WebDAV puro, nessuna dipendenza esterna aggiuntiva.
+      * Il pannello ricarica automaticamente le credenziali da Settings ad ogni apertura.
+
+    2.4.0 - Auto-Commit & Full GeoPackage Export:
+      * Aggiunta richiesta durante il "Commit Progetto" per fare l'Auto-Commit di tutti i layer vettoriali attivi.
+      * Aggiunta la possibilità di estrarre immediatamente un GeoPackage auto-contenuto e portatile con tutti i layer e il progetto.
+      * Aggiornati i dettagli dell'autore e i contatti (sinocloud.it, github sag1687).
+
+    2.3.1 - Hotfix GPKG Relativization:
+      * Fixed an issue where QGIS failed to correctly auto-resolve URIs prefixed with "./" manually. Exported datasources are now injected via absolute paths and explicitly converted to pure relative paths using `setFilePathStorage`.
+
+    2.3.0 - Self-Contained GeoPackage Export:
+      * Fixed project extraction to GeoPackage: all vector layers (even those without a Ledger commit) are now embedded in the output GPKG.
+      * Layer datasource URIs are now stored as relative paths, making the exported package fully portable across machines and folders.
+      * Raster layers are copied alongside the GPKG with relative paths.
+      * Extraction dialog now shows a clear warning for any layer that could not be embedded.
+
+    2.2.0 - Minor fixes:
+      * Renamed "colleghi" wording to "mod_user" per user request.
+
+    2.1.0 - Packaging Fix & QGIS Menu Update:
+      * Critical packaging bugfix: the plugin installer was loading an old backup snapshot. The ZIP is now perfectly structured as 'qgis_ledger' allowing automatic flawless installation.
+      * All toolbar actions (including the new Info tab) are now strictly mirrored inside the main "Plugins -> QGIS Ledger" menu of QGIS to guarantee availability.
+
+    1.8.0 - Team Activity Update:
+      * Enhanced the Info dialog with a new 'Attività' tab to monitor edits made from different machines or by other authors.
+      * Updated documentation and descriptions.
+
+    1.7.0 - Portable Projects Update:
+      * Implemented dynamic relative paths for database layers to fully support projects shared via Nextcloud/USB across Linux and Windows.
+      
+    1.6.0 - Latest updates:
+      * Removed AI integration and Google Drive to simplify codebase
+      * Improved Nextcloud settings UI with separate configuration fields
+      * Added startup banner to notify users of modifications made by colleagues
+
+    1.0.0 - Initial release:
+      * Transaction Ledger with granular change tracking
+      * Visual Diff Engine with symmetric difference
+      * Merge Wizard for conflict resolution
+      * Timeline Side Panel with read-only preview
+      * Status Bar LED indicator
+
+tags=versioning,git,collaborative,ledger,qgis_ledger,geopackage,export,autocommit
+
+category=Plugins
+icon=logoplugin.jpg
+server=False
+experimental=False
+deprecated=False
