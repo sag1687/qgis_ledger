@@ -1259,7 +1259,7 @@ class LedgerPlugin:
             cfg = configparser.ConfigParser()
             cfg.read(meta_path, encoding="utf-8")
             if cfg.has_section("general"):
-                name = cfg.get("general", "name", fallback=name).replace("_", " ").title()
+                name = cfg.get("general", "name", fallback=name).replace("_", " ")
                 version = cfg.get("general", "version", fallback=version)
                 author = cfg.get("general", "author", fallback=author)
                 email = cfg.get("general", "email", fallback=email)
