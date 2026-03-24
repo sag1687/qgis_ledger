@@ -18,7 +18,7 @@ import platform
 import configparser
 from functools import partial
 
-from qgis.PyQt.QtCore import Qt, QTimer, QSettings, QObject
+from qgis.PyQt.QtCore import Qt, QTimer, QSettings, QObject, QEvent
 from qgis.PyQt.QtGui import QIcon, QColor
 from qgis.PyQt.QtWidgets import (
     QAction, QToolBar, QInputDialog, QMessageBox,
@@ -34,7 +34,7 @@ from qgis.core import (
     QgsFeature,
     QgsGeometry,
 )
-from qgis.gui import QgisInterface
+from qgis.gui import QgisInterface as QGISInterface
 
 from .ledger_ledger import LedgerDB
 from .ledger_diff import LedgerDiff
@@ -53,9 +53,8 @@ class _DropEventFilter(QObject):
         self._plugin = plugin
 
     def eventFilter(self, obj, event):
-        from qgis.PyQt.QtCore import QEvent
         etype = event.type()
-        if etype in (QEvent.DragEnter, QEvent.DragMove):
+        if etype == QEvent.DragEnter or etype == QEvent.DragMove:
             try:
                 mime = event.mimeData()
                 if mime and mime.hasFormat("application/x-qgis-ledger-nc"):
@@ -88,7 +87,7 @@ class _DropEventFilter(QObject):
 class LedgerPlugin:
     """QGIS QGIS Ledger — Main Plugin Class."""
 
-    def __init__(self, iface: QgisInterface):
+    def __init__(self, iface: QGISInterface):
         self.iface = iface
         self.ledger = LedgerDB()
         self.diff_engine = LedgerDiff(self.ledger)
@@ -251,6 +250,7 @@ class LedgerPlugin:
         # -- Nextcloud Panel (not a dock, embedded in tab) ------------ #
         from qgis.PyQt.QtWidgets import QDockWidget, QTabWidget
         self.nextcloud_panel = NextcloudBrowserPanel()
+        self.nextcloud_panel.tree.layer_dropped.connect(self._on_layer_dropped_to_nc)
 
         # -- Timeline Panel (not a dock, embedded in tab) ------------- #
         from .ledger_timeline import TimelinePanel
@@ -278,19 +278,11 @@ class LedgerPlugin:
         self.upload_nc_action = QAction(self._make_icon("☁️", "#3498db"), "Invia a Nextcloud (QGIS Ledger)", self.iface.mainWindow())
         self.upload_nc_action.triggered.connect(self._on_upload_layer_to_nc)
         
-        # Metodo robusto: intercettiamo il menu contestuale del layer tree
         try:
-            ltv = self.iface.layerTreeView()
-            if ltv:
-                ltv.setContextMenuPolicy(Qt.CustomContextMenu)
-                ltv.customContextMenuRequested.connect(self._on_toc_context_menu)
-        except Exception:
-            pass
-        
-        # Fallback: prova anche addCustomActionForLayerType
-        try:
-            self.iface.addCustomActionForLayerType(self.upload_nc_action, "", 0, False)  # 0 = VectorLayer
-            self.iface.addCustomActionForLayerType(self.upload_nc_action, "", 1, False)  # 1 = RasterLayer
+            from qgis.core import QgsMapLayerType
+            self.iface.addCustomActionForLayerType(self.upload_nc_action, "QGIS Ledger", QgsMapLayerType.VectorLayer, False)
+            self.iface.addCustomActionForLayerType(self.upload_nc_action, "QGIS Ledger", QgsMapLayerType.RasterLayer, False)
+            self.iface.addCustomActionForLayerType(self.upload_nc_action, "QGIS Ledger", QgsMapLayerType.MeshLayer, False)
         except Exception:
             pass
 
@@ -299,10 +291,9 @@ class LedgerPlugin:
         QgsProject.instance().cleared.connect(self._on_project_closed)
 
         # -- Enable Drag & Drop from Nextcloud panel → ovunque in QGIS -- #
-        # Usiamo QApplication event filter con un QObject dedicato.
-        from qgis.PyQt.QtWidgets import QApplication
+        # Usiamo l'event filter sulla mainWindow invece che su QApplication intera per sicurezza.
         self._drop_filter = _DropEventFilter(self)
-        QApplication.instance().installEventFilter(self._drop_filter)
+        self.iface.mainWindow().installEventFilter(self._drop_filter)
 
         # If a project is already open, connect now
         if QgsProject.instance().fileName():
@@ -346,8 +337,7 @@ class LedgerPlugin:
 
         # Rimuovi app-level event filter
         try:
-            from qgis.PyQt.QtWidgets import QApplication
-            QApplication.instance().removeEventFilter(self._drop_filter)
+            self.iface.mainWindow().removeEventFilter(self._drop_filter)
             self._drop_filter = None
         except Exception:
             pass
@@ -359,21 +349,7 @@ class LedgerPlugin:
     # Drag & Drop event filter (Nextcloud → Canvas)
     # ================================================================== #
 
-    def _on_toc_context_menu(self, pos):
-        """Menu contestuale personalizzato per il Layer Tree (TOC)."""
-        ltv = self.iface.layerTreeView()
-        if not ltv:
-            return
-        # Costruisci il menu standard di QGIS
-        menu = self.iface.layerTreeView().menuProvider().createContextMenu()
-        if not menu:
-            from qgis.PyQt.QtWidgets import QMenu
-            menu = QMenu()
-        # Aggiungi la nostra azione solo se Nextcloud è configurato
-        if LedgerSettings.remote_type() == "webdav":
-            menu.addSeparator()
-            menu.addAction(self.upload_nc_action)
-        menu.exec_(ltv.mapToGlobal(pos))
+    # Menù contestuale nativo gestito via addCustomActionForLayerType
 
 
 
@@ -663,6 +639,25 @@ class LedgerPlugin:
         worker.signals.finished.connect(lambda res: self.status_led.setToolTip("Sincronizzato col Cloud ✅"))
         QThreadPool.globalInstance().start(worker)
 
+    def _on_layer_dropped_to_nc(self, drop_data: str):
+        """Gestisce il drop di un layer da QGIS nel pannello Nextcloud."""
+        from qgis.core import QgsProject
+        
+        target_layer = None
+        # data format typically: TYPE:name:uri or layer ID. Let's do a fuzzy match.
+        for lyr in QgsProject.instance().mapLayers().values():
+            if lyr.id() in drop_data or lyr.name() in drop_data or drop_data in lyr.source():
+                target_layer = lyr
+                break
+                
+        if not target_layer:
+            target_layer = self.iface.activeLayer() # Fallback al layer attivo
+            
+        if target_layer:
+            self.iface.setActiveLayer(target_layer)
+            self._on_upload_layer_to_nc()
+
+
     def _on_upload_layer_to_nc(self):
         if LedgerSettings.remote_type() != "webdav" or not self.nextcloud_panel:
             QMessageBox.warning(self.iface.mainWindow(), "QGIS Ledger", "Sincronizzazione Nextcloud disattivata o non configurata.\nVai in Impostazioni e verifica i parametri.")
@@ -810,7 +805,7 @@ class LedgerPlugin:
         import tempfile as _tempfile
         from qgis.core import (
             QgsProject, QgsVectorLayer, QgsFeature, QgsGeometry,
-            QgsVectorFileWriter, QgsWkbTypes, Qgis
+            QgsVectorFileWriter, QgsWkbTypes, Qgis as QGIS
         )
         import sqlite3
 
@@ -956,7 +951,7 @@ class LedgerPlugin:
                         errors.append(f"Raster '{layer.name()}': file originale non trovato e nessuno snapshot disponibile.")
 
         try:
-            temp_proj.setFilePathStorage(Qgis.FilePathType.Relative)
+            temp_proj.setFilePathStorage(QGIS.FilePathType.Relative)
         except AttributeError: pass
 
         out_uri = f"geopackage:{out}?projectName=Storico_v{cid}"

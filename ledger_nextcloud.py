@@ -398,11 +398,40 @@ QProgressBar::chunk { background: #2980b9; }
 
 class _DragTreeWidget(QTreeWidget):
     """QTreeWidget che supporta il drag-out di file Nextcloud."""
+    layer_dropped = pyqtSignal(str)  # emette l'ID o nome del layer quando viene droppato
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setDragEnabled(True)
-        self.setDragDropMode(QTreeWidget.DragOnly)
+        self.setAcceptDrops(True)
+        self.setDropIndicatorShown(True)
+        self.setDragDropMode(QTreeWidget.DragDrop)
         self.setSelectionMode(QTreeWidget.SingleSelection)
+
+    def dragEnterEvent(self, event):
+        mime = event.mimeData()
+        if mime.hasFormat("application/x-vnd.qgis.qgis.uri"):
+            event.accept()
+        else:
+            super().dragEnterEvent(event)
+
+    def dragMoveEvent(self, event):
+        mime = event.mimeData()
+        if mime.hasFormat("application/x-vnd.qgis.qgis.uri"):
+            event.accept()
+        else:
+            super().dragMoveEvent(event)
+
+    def dropEvent(self, event):
+        mime = event.mimeData()
+        if mime.hasFormat("application/x-vnd.qgis.qgis.uri"):
+            data = bytes(mime.data("application/x-vnd.qgis.qgis.uri")).decode("utf-8")
+            # tipicamente contiene righe col formato: "type:nome:source" o layerID
+            if data:
+                self.layer_dropped.emit(data)
+            event.accept()
+        else:
+            super().dropEvent(event)
 
     def startDrag(self, supportedActions):
         item = self.currentItem()
