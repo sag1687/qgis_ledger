@@ -2,7 +2,7 @@
 name=QGIS Ledger
 qgisMinimumVersion=3.0
 description=QGIS Ledger \u00E8 un plugin di versionamento ed esplorazione cronologica locale dei livelli vettoriali. Salva i commit, torna indietro nel tempo e naviga nello storico in modo isolato per utente. Supporto Nextcloud integrato.
-version=2.7.0
+version=2.8.0
 author=Dott. Sarino Alfonso Grande
 email=sino.grande@gmail.com
 
@@ -14,6 +14,8 @@ tracker=https://github.com/sag1687/qgis-ledger/issues
 hasProcessingProvider=no
 
 changelog=
+    2.8.0 - Packaging Directory Fix:
+      * Fixed a problem with the ZIP root folder name that led to a "ModuleNotFoundError" when loading the plugin. The ZIP archive now cleanly extracts a single "qgis_ledger" Python module folder.
     2.7.0 - QGIS Naming Consistency & Cleanup:
       * Fixed UI capitalization bug caused by Python string methods showing "Qgis" instead of "QGIS".
       * Cleaned up development directories and dropped obsolete backup files from ZIP payload.
