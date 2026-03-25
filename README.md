@@ -1,444 +1,174 @@
-# QGIS Ledger
+🇮🇹 Italiano
+QGIS Ledger (sketinel)
 
-**QGIS Ledger** (nome plugin: `sketinel`) è un sistema di versionamento completo per QGIS. Trasforma il desktop GIS in una piattaforma collaborativa con storicizzazione Git-like, rollback, diff visuale, estrazione file, salvataggio automatico e **browser Nextcloud integrato** — tutto senza PostGIS né server dedicati.
+QGIS Ledger (nome del plugin: sketinel) è un sistema di versionamento completo per QGIS. Trasforma il tuo desktop GIS in una piattaforma collaborativa offrendo storicizzazione in stile Git, rollback, diff visivo, salvataggio automatico e un browser Nextcloud integrato. Tutto questo funziona nativamente senza la necessità di PostGIS o server dedicati.
+🚀 Requisiti
 
----
+    Versione QGIS: 3.16 o superiore.
 
-## 🚀 Requisiti
+    Dipendenze: Nessuna dipendenza esterna. Utilizza Python standard, PyQGIS e SQLite integrato.
 
-- **QGIS 3.16** o superiore
-- Nessuna dipendenza esterna. Funziona con Python standard + PyQGIS + SQLite integrato.
-- **Supporto Cloud/USB**: Progetti completamente portabili tra Linux/Windows tramite percorsi relativi dinamici.
+    Portabilità: Progetti completamente portabili tra Linux e Windows grazie all'uso di percorsi relativi dinamici (supporto Cloud/USB).
 
----
+📦 Installazione
 
-## 📦 Installazione
+    Copia la cartella sketinel nel percorso: ~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/
 
-1. Copia la cartella `sketinel` in `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`
-2. Apri QGIS → **Plugin** → **Gestisci e Installa Plugin** → Abilita **sketinel**
-3. Comparirà la toolbar **QGIS Ledger** con tutti i pulsanti descritti sotto.
+    Apri QGIS e vai su Plugin → Gestisci e Installa Plugin.
 
----
+    Abilita sketinel dalla lista.
 
-## 🛠️ Funzionalità Complete
+    La toolbar QGIS Ledger comparirà nell'interfaccia principale.
 
-### 1. 💾 Commit Layer
-**Pulsante:** `💾 Commit`
+🛠️ Funzionalità Principali
 
-Salva uno snapshot completo del layer vettoriale o raster attivo nel database storico.
+    💾 Commit Layer: Salva uno snapshot completo (feature, attributi, geometrie) del layer attivo nel database .ledger.db, includendo uno screenshot automatico della mappa.
 
-**Come usarlo:**
-1. Seleziona un layer nella TOC di QGIS
-2. Clicca `💾 Commit` nella toolbar
-3. Inserisci un messaggio descrittivo (es. "Aggiunta nuova zona residenziale")
-4. Il sistema salva tutte le feature, gli attributi e le geometrie nel database `.ledger.db`
-5. Viene catturato automaticamente uno **screenshot** della mappa attuale
+    💾 Commit Progetto: Salva una copia dell'intero file .qgz all'interno della cartella nascosta .ledger_history/project/.
 
----
+    🕓 Timeline: Pannello laterale che mostra la cronologia completa dei commit. Permette di filtrare i nodi e utilizzare azioni rapide come Anteprima, Rollback, Diff e Visualizzazione Mappa.
 
-### 2. 💾 Commit Progetto
-**Pulsante:** `💾 Commit Progetto`
+    Δ Diff (Confronto Visuale): Evidenzia le differenze tra due versioni sulla mappa (Verde = Aggiunte, Rosso = Rimosse, Arancione = Modificate). Consente di estrarre la versione o sostituire quella corrente.
 
-Salva una copia completa dell'intero file di progetto `.qgz`.
+    📂 Esplora Storico: Un file browser per navigare tutte le versioni passate. Permette di salvare estrazioni in .gpkg/.tif/.qgz o caricare versioni storiche come layer isolati, anche se il layer originale è stato cancellato.
 
-**Come usarlo:**
-1. Clicca `💾 Commit Progetto`
-2. Inserisci il messaggio
-3. Il file `.qgz` viene copiato nella cartella `.ledger_history/project/`
+    ⏱️ Auto-Save: Timer configurabile (1-120 minuti) per salvare automaticamente layer aperti, progetto e screenshot, notificando l'utente a ogni ciclo completato.
 
----
+    ⏪ Rollback Intelligente: Ripristina i dati in modo dinamico. Ricostruisce persino interi layer dal database se i file fisici originali sono stati eliminati.
 
-### 3. 🕓 Timeline
-**Pulsante:** `🕓 Timeline` (toggle)
+    🖼️ Screenshot per Commit: Ogni salvataggio cattura un'istantanea visiva, visualizzabile direttamente dalla Timeline.
 
-Pannello laterale in stile GitKraken che mostra la cronologia completa dei commit.
+    ℹ️ Info e Notifiche: Monitoraggio in tempo reale delle modifiche effettuate da altri utenti (mod_user) sullo stesso progetto condiviso.
 
-**Come usarlo:**
-1. Clicca `🕓 Timeline` per aprire/chiudere il pannello
-2. Usa il menu a tendina in alto per filtrare: **Tutti**, **Solo Progetto**, o un layer specifico
-3. Ogni nodo mostra: ID, messaggio, utente, data
-4. **Pulsanti su ogni nodo:**
-   - `👁️ Preview` — Anteprima temporanea (annullabile con Ctrl+Z)
-   - `⏪ Rollback` — Ripristina il layer a quello stato passato
-   - `Δ Diff` — Confronto visivo con lo stato corrente
-   - `🖼️ Vedi Mappa` — Apre lo screenshot catturato al momento del commit
+    ⚙ Impostazioni: Configurazione utente, intervalli di salvataggio, chiavi API per IA e credenziali Cloud (Locale, Nextcloud/WebDAV, Google Drive).
 
----
+    🚦 Barra di Stato LED: Indicatore visivo istantaneo (Verde = Sincronizzato, Giallo = Modifiche in sospeso, Rosso = Conflitto). Cliccandolo si apre la Timeline.
 
-### 4. Δ Diff (Confronto Visuale)
-**Pulsante:** `Δ Diff`
+    🔀 Merge Wizard: Interfaccia a schermo diviso per risolvere agevolmente i conflitti di editing tra più utenti.
 
-Confronta due versioni qualsiasi di un layer e visualizza le differenze direttamente sulla mappa.
+☁️ Sincronizzazione Nextcloud (Workflow Cloud-Native)
 
-**Come usarlo:**
-1. Clicca `Δ Diff` nella toolbar
-2. Seleziona **Versione A** (vecchia) e **Versione B** (nuova) dai menu a tendina
-3. Premi OK
-4. Sulla mappa compariranno layer temporanei colorati:
-   - 🟢 **Verde** — Feature aggiunte
-   - 🔴 **Rosso** — Feature rimosse
-   - 🟡 **Arancione** — Feature modificate (mostra lo stato finale)
-5. Si aprirà una finestra di riepilogo con i conteggi e le azioni rapide:
-   - `📥 Estrai Versione` — Salva la vecchia versione come file `.gpkg`
-   - `🔄 Sostituisci corrente` — Rollback immediato alla versione selezionata
+Dalla versione 2.5.0, QGIS Ledger integra un Workspace Locale Sincronizzato per gestire dati pesanti senza latenza di rete.
 
----
+    📥 Check-out Rapido: Fai doppio clic su un file dal pannello Nextcloud. Il sistema scarica il file e tutto il suo ecosistema in ~/QGIS_Cloud_Workspace/ aprendolo in mappa.
 
-### 5. 📂 Esplora Storico (Browser File)
-**Pulsante:** `📂 Esplora Storico`
+    📤 Auto-Sync in Background: Qualsiasi commit o salvataggio fatto su un file Cloud viene caricato in remoto in background, mantenendo l'interfaccia di QGIS fluida e reattiva.
 
-Archivio completo di tutti i file salvati nella storia del progetto. Permette di estrarre o caricare qualsiasi versione passata **senza fare un rollback distruttivo**.
+    🚀 Esportazione Diretta: Clicca col tasto destro su un layer nella TOC e scegli "Invia a Nextcloud" per impacchettarlo e caricarlo online.
 
-**Come usarlo:**
-1. Clicca `📂 Esplora Storico`
-2. Nella tabella vedrai tutti i commit: ID, Tipo (VECTOR/RASTER/PROJECT), Nome, Data, Utente
-3. Seleziona una riga e usa i pulsanti in basso:
-   - **⬇️ Estrai File / Salva con nome** — Salva quella versione in una cartella a scelta (Desktop, ecc.) come `.gpkg`, `.tif` o `.qgz`
-   - **🗺️ Carica in QGIS come Layer isolato** — Aggiunge il file storico alla mappa come layer temporaneo scollegato, perfetto per confronti visivi senza alterare nulla
+    🖱️ Drag & Drop (v2.6.0): Trascina file direttamente dal browser Nextcloud alla mappa di QGIS per un download e inserimento istantaneo.
 
+📁 Struttura dei File
 
-> 💡 **Funziona anche se il layer originale è stato eliminato dal progetto!** Il sistema ricostruisce lo schema dal database.
+La gerarchia dei file generata dal plugin mantiene il tuo progetto pulito e organizzato:
 
----
+    progetto.qgz: Il tuo file di progetto QGIS.
 
-### 6. ⏱️ Auto-Save (Salvataggio Automatico)
-**Pulsante:** `⏱️ Auto-Save` (toggle ON/OFF)
+    progetto.ledger.db: Database SQLite contenente tutti i commit.
 
-Attiva un timer che salva automaticamente tutti i layer e il progetto ad intervalli regolari.
+    .ledger_history/: Cartella nascosta.
 
-**Come usarlo:**
-1. Vai in **⚙ Settings** → imposta l'intervallo desiderato (1-120 minuti, default: 5)
-2. Clicca `⏱️ Auto-Save` nella toolbar per attivare il timer
-3. Ogni N minuti il sistema:
-   - Committa automaticamente tutti i layer vettoriali aperti
-   - Cattura uno screenshot della mappa
-   - Salva il file di progetto `.qgz` su disco
-4. Riceverai una notifica nella barra messaggi di QGIS ad ogni ciclo
-5. Clicca di nuovo il pulsante per disattivare
+    .ledger_history/project/: Storico dei file di progetto.
 
----
+    .ledger_history/raster/: Copie di backup dei layer raster.
 
-### 7. ⏪ Rollback Intelligente
-Disponibile dalla **Timeline** o dal **Diff**.
+    .ledger_history/screenshots/: Immagini generate ai salvataggi.
 
-**Funzionalità avanzate:**
-- Se il layer è ancora nel progetto → ripristino diretto dei dati
-- Se il layer è stato **rimosso** dalla TOC → il sistema tenta di ricaricarlo dal path originale
-- Se anche il **file fisico** è stato cancellato → QGIS Ledger **ricostruisce il layer dal database**, creando un nuovo `.gpkg` e caricandolo automaticamente in mappa
-- Per i **Progetti** → sovrascrive il `.qgz` e ricarica il progetto QGIS
+💡 Suggerimenti Rapidi
 
----
+    Premi sempre Ctrl+S dopo un rollback per rendere permanenti le modifiche nel file di progetto.
 
-### 8. 🖼️ Screenshot per Commit
-Ogni commit (layer, raster o progetto) cattura automaticamente un'istantanea della mappa attuale.
+    Utilizza la funzione Esplora Storico per caricare layer passati in isolamento senza distruggere il tuo lavoro attuale.
 
-**Come visualizzarli:**
-- Nella Timeline, clicca il pulsante `🖼️ Vedi Mappa` su qualsiasi nodo
-- Si aprirà l'immagine nel visualizzatore predefinito del sistema operativo
+    Attiva Auto-Save nelle sessioni di lavoro più intense per prevenire la perdita di dati.
 
----
+📄 Licenza
 
-### 9. ℹ️ Tab Informazioni e Attività
-**Pulsante:** `ℹ️ Info`
+Rilasciato sotto licenza GNU General Public License v2.0 o successiva.
+🇬🇧 English
+QGIS Ledger (sketinel)
 
-Oltre a mostrare la versione e i contatti (SinoCloud), la finestra Info contiene un tab dedicato alle **🔔 Notifiche mod_user**. 
-Permette di monitorare rapidamente tutte le modifiche fatte di recente da altre postazioni o da mod_user collegati allo stesso progetto via Nextcloud, Google Drive o cartella condivisa.
+QGIS Ledger (plugin name: sketinel) is a comprehensive versioning system for QGIS. It transforms your desktop GIS into a collaborative platform, offering Git-like history, rollbacks, visual diffs, auto-saving, and an integrated Nextcloud browser. All of this operates locally without requiring PostGIS or dedicated servers.
+🚀 Requirements
 
----
+    QGIS Version: 3.16 or higher.
 
-### 10. ⚙ Impostazioni
-**Pulsante:** `⚙ Settings`
+    Dependencies: No external dependencies. Uses standard Python, PyQGIS, and built-in SQLite.
 
-| Sezione | Opzione | Descrizione |
-|---|---|---|
-| **Generale** | Nome Utente | Chi è l'autore dei commit (default: login OS) |
-| **Generale** | Auto-commit | Commit automatico quando salvi un layer |
-| **Auto-Save** | Intervallo | Frequenza del salvataggio automatico (1-120 min) |
-| **Cloud** | Tipo Archiviazione | Locale/LAN o Nextcloud (WebDAV) |
-| **Cloud** | Nextcloud Server URL | Es. `https://nextcloud.example.com` |
-| **Cloud** | Nextcloud Cartella Remota | Es. `/QGIS_Projects/` |
-| **Cloud** | Nextcloud Utente | Nome utente Nextcloud |
-| **Cloud** | Nextcloud Password App | Password o token applicazione |
+    Portability: Fully portable projects across Linux and Windows via dynamic relative paths (Cloud/USB support).
 
----
+📦 Installation
 
-### 11. 🚦 Barra di Stato LED
-Indicatore visivo nella barra di stato di QGIS:
-- 🟢 **Verde** — Tutto sincronizzato
-- 🟡 **Giallo** — Modifiche locali non committate
-- 🔴 **Rosso** — Conflitto rilevato
+    Copy the sketinel folder to: ~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/
 
-Cliccando sul LED si apre/chiude il pannello Timeline.
+    Open QGIS and navigate to Plugins → Manage and Install Plugins.
 
----
+    Enable sketinel from the list.
 
-### 12. 🔀 Merge Wizard
-Interfaccia split-screen per risolvere conflitti quando due utenti modificano lo stesso layer su una cartella condivisa.
+    The QGIS Ledger toolbar will appear in your interface.
 
----
+🛠️ Core Features
 
-### 13. ☁️ Sincronizzazione Cloud Nextcloud (Workflow Integrato, NOVITÀ v2.5.0)
-**Pulsanti:** `☁️ Nextcloud` (Toolbar) e `☁️ Invia a Nextcloud` (Tasto destro sui layer)
+    💾 Commit Layer: Saves a complete snapshot (features, attributes, geometries) of the active layer to the .ledger.db database, including an automatic map screenshot.
 
-QGIS Ledger v2.5.0 trasforma il tuo workflow GIS in un ecosistema **Cloud-Native** appoggiato su Nextcloud. Poiché i database SQLite (`.ledger.db`) e i progetti GIS pesanti non possono essere manipolati stabilmente in streaming sul web, il plugin adotta in automatico un meccanismo invisibile di **Workspace Locale Sincronizzato**.
+    💾 Commit Project: Saves a backup copy of your entire .qgz file into the hidden .ledger_history/project/ folder.
 
-**Configurazione Iniziale:**
-1. Apri **⚙ Settings** $\rightarrow$ seleziona **Tipo Archiviazione: Nextcloud**.
-2. Compila **Server URL**, **Utente**, **Password App** e **Cartella Remota** di default.
+    🕓 Timeline: A side panel displaying the full commit history. Allows node filtering and quick actions like Preview, Rollback, Diff, and View Map.
 
-🔥 **IL Workflow Cloud in 3 Fasi:**
+    Δ Diff (Visual Comparison): Highlights differences between two versions directly on the map (Green = Added, Red = Removed, Orange = Modified). Allows version extraction or current state replacement.
 
-1. 📥 **Check-out (Auto-Download e Import):**
-   - Apri il pannello Nextcloud. Fai **doppio clic** su un file (es. `mappa.shp` o `progetto.qgz`).
-   - Il plugin replicherà la struttura della cartella cloud sul tuo computer in `~/QGIS_Cloud_Workspace/`.
-   - Verrà scaricato non solo il file cliccato, ma **anche tutto il suo ecosistema** (i file ausiliari `.dbf/.shx` per gli shapefile, oppure l'intero database storico del Ledger per i progetti).
-   - Il layer o il progetto viene automaticamente aperto in QGIS pronto per l'editing!
+    📂 History Explorer: A file browser for navigating past versions. Extract commits as .gpkg/.tif/.qgz or load historical versions as isolated layers, even if the original layer was deleted.
 
-2. 📤 **Check-in (Auto-Sync in Background):**
-   - Quando il progetto proviene da Nextcloud (o Nextcloud è impostato come attivo), **qualsiasi salvataggio o Commit** tu faccia in QGIS verrà registrato sul disco locale quasi istantaneamente.
-   - Subito dopo, un'attività nascosta in **background caricherà i pacchetti modificati, i file di progetto e il database SQLite sul server Nextcloud**. QGIS non subisce rallentamenti e il Cloud resta sempre una copia 1:1 perfetta!
+    ⏱️ Auto-Save: Configurable timer (1-120 minutes) to auto-commit open layers, capture screenshots, and save the project, with notifications upon completion.
 
-3. 🚀 **Esportazione Rapida (TOC Context Menu):**
-   - Fai clic col **Tasto Destro** su un qualunque layer attivo nella barra dei livelli (TOC).
-   - Seleziona *☁️ Invia a Nextcloud (QGIS Ledger)*.
-   - Scegli la cartella remota (verrà creata se non esiste) e il layer verrà impacchettato e caricato sul tuo Cloud.
+    ⏪ Smart Rollback: Dynamically restores data. It can even rebuild entire layers from the database if the original physical files are missing.
 
-4. 🖱️ **Drag & Drop (NOVITÀ v2.6.0):**
-   - Apri il pannello **☁️ Browser Nextcloud** a sinistra.
-   - **Trascina** un qualsiasi file (shapefile, raster, GeoPackage, progetto) direttamente dalla lista del browser Nextcloud **sulla mappa di QGIS** (area del canvas).
-   - Il plugin scaricherà automaticamente il file (e tutti i file associati, come `.dbf`/`.shx` per gli shapefile) nella cartella locale `~/QGIS_Cloud_Workspace/` e lo aggiungerà come layer attivo nel progetto corrente.
-   - **Nota:** le cartelle non possono essere trascinate, solo i file. Per navigare nelle cartelle usa il doppio clic nel browser.
+    🖼️ Commit Screenshots: Every save captures a visual snapshot, accessible directly from the Timeline nodes.
 
-**Browser Nextcloud Classico:**
-Resta sempre disponibile la toolbar all'interno del dock laterale per eseguire operazioni manuali come: 📁 *Nuova Cartella*, ✏️ *Rinomina*, 🗑️ *Elimina file*, ⬆ *Carica* e ⬇ *Scarica individualmente*.
+    ℹ️ Info & Notifications: Real-time monitoring of edits made by other users (mod_user) on the same shared project.
 
----
+    ⚙ Settings: Configure username, auto-save intervals, AI API keys, and Cloud credentials (Local, Nextcloud/WebDAV, Google Drive).
 
-## 📁 Struttura dei File
+    🚦 LED Status Bar: Instant visual indicator (Green = Synced, Yellow = Pending changes, Red = Conflict). Clicking it toggles the Timeline panel.
 
-```
-📂 Il Tuo Progetto/
-├── progetto.qgz              ← Il tuo file di progetto QGIS
-├── progetto.ledger.db         ← Database SQLite con tutti i commit e snapshot
-└── .ledger_history/           ← Cartella nascosta con i file storici
-    ├── project/               ← Copie dei file .qgz per commit di progetto
-    ├── raster/                ← Copie dei file raster per commit raster
-    └── screenshots/           ← Screenshot della mappa per ogni commit
-```
+    🔀 Merge Wizard: A split-screen interface designed to smoothly resolve editing conflicts between multiple users.
 
----
+☁️ Nextcloud Synchronization (Cloud-Native Workflow)
 
-## 💡 Suggerimenti
+Starting from v2.5.0, QGIS Ledger integrates a Synchronized Local Workspace to handle heavy data without network latency.
 
-- **Ctrl+S** dopo ogni rollback o sostituzione per rendere permanenti le modifiche
-- Usa l'**Esplora Storico** per confrontare vecchie versioni senza rischiare il lavoro attuale
-- Attiva l'**Auto-Save** e dimentica il rischio di perdere dati
-- Usa il **Browser Nextcloud** per caricare GeoPackage esportati direttamente sul server condiviso
-- Ogni operazione mostra un alert con istruzioni e promemoria di salvataggio
+    📥 Quick Check-out: Double-click a file in the Nextcloud panel. The system downloads the file and its entire ecosystem to ~/QGIS_Cloud_Workspace/ and opens it.
 
----
+    📤 Background Auto-Sync: Any commit or save on a Cloud file is uploaded remotely in the background, keeping the QGIS interface fast and responsive.
 
-## 📄 Licenza
+    🚀 Direct Export: Right-click a layer in the Table of Contents and select "Send to Nextcloud" to package and upload it online.
 
-GNU General Public License v2.0 o successiva.
+    🖱️ Drag & Drop (v2.6.0): Drag files directly from the Nextcloud browser onto the QGIS map canvas for instant downloading and loading.
 
+📁 File Structure
 
----
+The plugin generates a clean hierarchy to keep your project organized:
 
-## 🚀 Requisiti
+    progetto.qgz: Your main QGIS project file.
 
-- **QGIS 3.16** o superiore
-- Nessuna dipendenza esterna. Funziona con Python standard + PyQGIS + SQLite integrato.
-- **Supporto Cloud/USB**: Progetti completamente portabili tra Linux/Windows tramite percorsi relativi dinamici.
+    progetto.ledger.db: SQLite database storing all commits.
 
----
+    .ledger_history/: Hidden history directory.
 
-## 📦 Installazione
+    .ledger_history/project/: Project file history.
 
-1. Copia la cartella `sketinel` in `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`
-2. Apri QGIS → **Plugin** → **Gestisci e Installa Plugin** → Abilita **sketinel**
-3. Comparirà la toolbar **QGIS Ledger** con tutti i pulsanti descritti sotto.
+    .ledger_history/raster/: Raster layer backups.
 
----
+    .ledger_history/screenshots/: Generated visual snapshots.
 
-## 🛠️ Funzionalità Complete
+💡 Quick Tips
 
-### 1. 💾 Commit Layer
-**Pulsante:** `💾 Commit`
+    Always press Ctrl+S after a rollback to make the changes permanent in your project file.
 
-Salva uno snapshot completo del layer vettoriale o raster attivo nel database storico.
+    Use the History Explorer to safely load past layers for comparison without disrupting your current work.
 
-**Come usarlo:**
-1. Seleziona un layer nella TOC di QGIS
-2. Clicca `💾 Commit` nella toolbar
-3. Inserisci un messaggio descrittivo (es. "Aggiunta nuova zona residenziale")
-4. Il sistema salva tutte le feature, gli attributi e le geometrie nel database `.ledger.db`
-5. Viene catturato automaticamente uno **screenshot** della mappa attuale
+    Enable Auto-Save during heavy editing sessions to prevent accidental data loss.
 
----
+📄 License
 
-### 2. 💾 Commit Progetto
-**Pulsante:** `💾 Commit Progetto`
-
-Salva una copia completa dell'intero file di progetto `.qgz`.
-
-**Come usarlo:**
-1. Clicca `💾 Commit Progetto`
-2. Inserisci il messaggio
-3. Il file `.qgz` viene copiato nella cartella `.ledger_history/project/`
-
----
-
-### 3. 🕓 Timeline
-**Pulsante:** `🕓 Timeline` (toggle)
-
-Pannello laterale in stile GitKraken che mostra la cronologia completa dei commit.
-
-**Come usarlo:**
-1. Clicca `🕓 Timeline` per aprire/chiudere il pannello
-2. Usa il menu a tendina in alto per filtrare: **Tutti**, **Solo Progetto**, o un layer specifico
-3. Ogni nodo mostra: ID, messaggio, utente, data
-4. **Pulsanti su ogni nodo:**
-   - `👁️ Preview` — Anteprima temporanea (annullabile con Ctrl+Z)
-   - `⏪ Rollback` — Ripristina il layer a quello stato passato
-   - `Δ Diff` — Confronto visivo con lo stato corrente
-   - `🖼️ Vedi Mappa` — Apre lo screenshot catturato al momento del commit
-
----
-
-### 4. Δ Diff (Confronto Visuale)
-**Pulsante:** `Δ Diff`
-
-Confronta due versioni qualsiasi di un layer e visualizza le differenze direttamente sulla mappa.
-
-**Come usarlo:**
-1. Clicca `Δ Diff` nella toolbar
-2. Seleziona **Versione A** (vecchia) e **Versione B** (nuova) dai menu a tendina
-3. Premi OK
-4. Sulla mappa compariranno layer temporanei colorati:
-   - 🟢 **Verde** — Feature aggiunte
-   - 🔴 **Rosso** — Feature rimosse
-   - 🟡 **Arancione** — Feature modificate (mostra lo stato finale)
-5. Si aprirà una finestra di riepilogo con i conteggi e le azioni rapide:
-   - `📥 Estrai Versione` — Salva la vecchia versione come file `.gpkg`
-   - `🔄 Sostituisci corrente` — Rollback immediato alla versione selezionata
-
----
-
-### 5. 📂 Esplora Storico (Browser File)
-**Pulsante:** `📂 Esplora Storico`
-
-Archivio completo di tutti i file salvati nella storia del progetto. Permette di estrarre o caricare qualsiasi versione passata **senza fare un rollback distruttivo**.
-
-**Come usarlo:**
-1. Clicca `📂 Esplora Storico`
-2. Nella tabella vedrai tutti i commit: ID, Tipo (VECTOR/RASTER/PROJECT), Nome, Data, Utente
-3. Seleziona una riga e usa i pulsanti in basso:
-   - **⬇️ Estrai File / Salva con nome** — Salva quella versione in una cartella a scelta (Desktop, ecc.) come `.gpkg`, `.tif` o `.qgz`
-   - **🗺️ Carica in QGIS come Layer isolato** — Aggiunge il file storico alla mappa come layer temporaneo scollegato, perfetto per confronti visivi senza alterare nulla
-
-> 💡 **Funziona anche se il layer originale è stato eliminato dal progetto!** Il sistema ricostruisce lo schema dal database.
-
----
-
-### 6. ⏱️ Auto-Save (Salvataggio Automatico)
-**Pulsante:** `⏱️ Auto-Save` (toggle ON/OFF)
-
-Attiva un timer che salva automaticamente tutti i layer e il progetto ad intervalli regolari.
-
-**Come usarlo:**
-1. Vai in **⚙ Settings** → imposta l'intervallo desiderato (1-120 minuti, default: 5)
-2. Clicca `⏱️ Auto-Save` nella toolbar per attivare il timer
-3. Ogni N minuti il sistema:
-   - Committa automaticamente tutti i layer vettoriali aperti
-   - Cattura uno screenshot della mappa
-   - Salva il file di progetto `.qgz` su disco
-4. Riceverai una notifica nella barra messaggi di QGIS ad ogni ciclo
-5. Clicca di nuovo il pulsante per disattivare
-
----
-
-### 7. ⏪ Rollback Intelligente
-Disponibile dalla **Timeline** o dal **Diff**.
-
-**Funzionalità avanzate:**
-- Se il layer è ancora nel progetto → ripristino diretto dei dati
-- Se il layer è stato **rimosso** dalla TOC → il sistema tenta di ricaricarlo dal path originale
-- Se anche il **file fisico** è stato cancellato → QGIS Ledger **ricostruisce il layer dal database**, creando un nuovo `.gpkg` e caricandolo automaticamente in mappa
-- Per i **Progetti** → sovrascrive il `.qgz` e ricarica il progetto QGIS
-
----
-
-### 8. 🖼️ Screenshot per Commit
-Ogni commit (layer, raster o progetto) cattura automaticamente un'istantanea della mappa attuale.
-
-**Come visualizzarli:**
-- Nella Timeline, clicca il pulsante `🖼️ Vedi Mappa` su qualsiasi nodo
-- Si aprirà l'immagine nel visualizzatore predefinito del sistema operativo
-
----
-
-### 9. ℹ️ Tab Informazioni e Attività
-**Pulsante:** `ℹ️ Info`
-
-Oltre a mostrare la versione e i contatti (SinoCloud), la finestra Info contiene un tab dedicato alle **🔔 Notifiche mod_user**. 
-Permette di monitorare rapidamente tutte le modifiche fatte di recente da altre postazioni o da mod_user collegati allo stesso progetto via Nextcloud, Google Drive o cartella condivisa.
-
----
-
-### 10. ⚙ Impostazioni
-**Pulsante:** `⚙ Settings`
-
-| Sezione | Opzione | Descrizione |
-|---|---|---|
-| **Generale** | Nome Utente | Chi è l'autore dei commit (default: login OS) |
-| **Generale** | Auto-commit | Commit automatico quando salvi un layer |
-| **Auto-Save** | Intervallo | Frequenza del salvataggio automatico (1-120 min) |
-| **AI** | API Key | Per funzionalità future di intelligenza artificiale |
-| **Cloud** | Tipo Archiviazione | Locale, Nextcloud/WebDAV, Google Drive |
-| **Cloud** | Percorso/URL | Cartella condivisa o indirizzo WebDAV |
-| **Cloud** | Credenziali | Utente e password per l'accesso remoto |
-
----
-
-### 11. 🚦 Barra di Stato LED
-Indicatore visivo nella barra di stato di QGIS:
-- 🟢 **Verde** — Tutto sincronizzato
-- 🟡 **Giallo** — Modifiche locali non committate
-- 🔴 **Rosso** — Conflitto rilevato
-
-Cliccando sul LED si apre/chiude il pannello Timeline.
-
----
-
-### 12. 🔀 Merge Wizard
-Interfaccia split-screen per risolvere conflitti quando due utenti modificano lo stesso layer su una cartella condivisa.
-
----
-
-## 📁 Struttura dei File
-
-```
-📂 Il Tuo Progetto/
-├── progetto.qgz              ← Il tuo file di progetto QGIS
-├── progetto.ledger.db         ← Database SQLite con tutti i commit e snapshot
-└── .ledger_history/           ← Cartella nascosta con i file storici
-    ├── project/               ← Copie dei file .qgz per commit di progetto
-    ├── raster/                ← Copie dei file raster per commit raster
-    └── screenshots/           ← Screenshot della mappa per ogni commit
-```
-
----
-
-## 💡 Suggerimenti
-
-- **Ctrl+S** dopo ogni rollback o sostituzione per rendere permanenti le modifiche
-- Usa l'**Esplora Storico** per confrontare vecchie versioni senza rischiare il lavoro attuale
-- Attiva l'**Auto-Save** e dimentica il rischio di perdere dati
-- Ogni operazione mostra un alert con istruzioni e promemoria di salvataggio
-
----
-
-## 📄 Licenza
-
-GNU General Public License v2.0 o successiva.
+Released under the GNU General Public License v2.0 or later.
