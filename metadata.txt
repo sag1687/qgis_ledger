@@ -1,0 +1,100 @@
+[general]
+name=QGIS Ledger
+qgisMinimumVersion=3.0
+description=QGIS Ledger provides enterprise-grade, Git-like version control for QGIS desktop. Featuring semantic geometric diffing, deterministic rollback, and seamless multi-cloud synchronization (Nextcloud, WebDAV, Dropbox, OneDrive, Google Drive) via pure Python standard libraries. Ensure spatial data integrity, track changes across teams, and manage GeoPackage-based distributed workflows directly within the QGIS environment.
+version=3.2.0
+author=Dott. Sarino Alfonso Grande
+email=sino.grande@gmail.com
+
+about=
+  ============================================================
+  ITALIANO
+  ============================================================
+
+  QGIS Ledger v3.2.0 — Versioning di Livello Enterprise per QGIS
+  Sistema di tracciamento storico e sincronizzazione cloud progettato per l'integrità dei dati spaziali, senza l'uso di dipendenze Python o database server esterni (come PostGIS). Ottimizzato per QGIS 3.x e QGIS 4 (Qt6).
+
+  VERSIONAMENTO & ANALISI DIFFERENZIALE
+  - Architettura a Snapshot: Conserva copie esatte (commit) dei layer vettoriali, raster, o dell'intero workspace (.qgz) all'interno di un database transazionale locale SQLite.
+  - Locale / LAN nativo: Lo storico e le iterazioni temporali sono memorizzate per impostazione predefinita in una cartella a fianco del file di progetto (.qgz). Lavorando su una porzione di rete condivisa (LAN), l'intero ecosistema storico è universalmente accessibile e sincronizzato per tutti i membri del team a zero-configurazione.
+  - Diff Semantico-Visuale: Algoritmo interno basato su differenza simmetrica che permette di isolare ed evidenziare topologicamente le entità aggiunte, rimosse o mutate tra due branch temporali.
+  - Rollback Deterministico: Ripristina istantaneamente l'infrastruttura dati e lo stato stilistico a qualsiasi iterazione precedente.
+  - Interfaccia di Risoluzione Conflitti (Merge Wizard): Analisi split-screen per mitigare le collisioni asincrone su namespace condivisi.
+
+  WORKFLOW DISTRIBUITO & CLOUD
+  - Multi-Provider Storage (Zero Pip): Supporto nativo via standard library per protocolli WebDAV, Dropbox API v2, Microsoft Graph API (OneDrive/SharePoint) e Google Drive API v3 (con rinnovo token OAuth2 automatico).
+  - Browser Cloud Integrato: Gestione I/O trasparente tramite Dock Widget dedicato (navigazione, gestione cartelle, upload/download diretto).
+  - Serializzazione Vettoriale GeoPackage on-the-fly: Operazioni drag-and-drop convertono autonomamente i layer raw in file GeoPackage, incapsulando contestualmente la rappresentazione `.qml` nella tabella di sistema `layer_styles` per una fedeltà visiva portatile immediata.
+
+  ORCHESTRAZIONE & AUTOMAZIONE
+  - Auto-Commit Trigger-Based: Sincronizzazione atomica silente ad ogni salvataggio del layer in stato di edit.
+  - Auto-Save Asincrono: Polling configurabile per la storicizzazione completa dell'ecosistema di progetto.
+  - Nomenclatura Intelligente: Tassonomia crittografica dinamica per repository e allegati multimediali.
+
+  ============================================================
+  ENGLISH
+  ============================================================
+
+  QGIS Ledger v3.2.0 — Enterprise-Grade Version Control for QGIS
+  A comprehensive historical tracking and cloud synchronization engine engineered for geospatial data integrity, operating entirely dependency-free across QGIS 3.x and QGIS 4 (Qt6).
+
+  VERSIONING & DIFFERENTIAL ANALYSIS
+  - Snapshot Architecture: Safely preserves atomic commits of vector pipelines, raster topologies, or the entire composite `.qgz` workspace inside a transactional SQLite database.
+  - Semantic Visual Diff: Employs a symmetric-difference algorithm to geometrically isolate and spatially highlight added, removed, or mutated entities across diverging timelines.
+  - Deterministic Rollback: Instantaneously reconstructs previous infrastructural data schemas and their attached styling.
+  - Interactive Conflict Resolution (Merge Wizard): Split-screen telemetry mitigating asynchronous overwrite collisions on shared persistent storage.
+
+  DISTRIBUTED WORKFLOWS & CLOUD INTEGRATION
+  - Zero-Dependency Multi-Provider Storage: Implements raw stdlib-driven architectures for Nextcloud/WebDAV, Dropbox API v2, Microsoft Graph (OneDrive/SharePoint), and Google Drive API v3 (with OAuth2 auto-refresh).
+  - Extensible Cloud Browser: Integrated IO management dock widget offering fully-fledged CRUD operations on remote instances.
+  - On-the-Fly GeoPackage Serialization: Drag-and-drop routines transparently encapsulate raw vector outputs into standalone GeoPackages, embedding active `.qml` definitions directly inside the `layer_styles` payload for immediate declarative rendering across remote machines.
+
+  ORCHESTRATION & AUTOMATION
+  - Trigger-Based Auto-Commit: Silently commits local mutations on edit closure.
+  - Asynchronous Auto-Save: Background polling pipeline for robust ecosystem-wide snapshotting.
+  - Intelligent Nomenclature: Dynamic taxonomies ensuring strict traceability across repositories and multimedia assets.
+
+homepage=https://sinocloud.it
+repository=https://github.com/sag1687/qgis-ledger
+tracker=https://github.com/sag1687/qgis-ledger/issues
+hasProcessingProvider=no
+
+changelog=
+    3.2.0 - UI Overhaul & Stats:
+      * NEW: Unified Commit menu (Layer and Project) in a single QToolButton dropdown.
+      * NEW: Removed standalone Sync button for a cleaner toolbar workflow.
+      * NEW: Added logical database sizing (DB Size) and an explicit "Open Screenshots Dir" button inside the Plugin Info popup.
+      * NEW: Smart Screenshot Naming reflecting core ledger attributes and user data (`autocommit_` vs standard triggers).
+
+    3.1.1 - Bugfix & Stability:
+      * FIX: Resolved geometry invisibility post-rollback by implicitly requesting extent recalculation.
+      * FIX: Enforced robust Vector/GPKG styles restoration into the database and .qml sidecar to prevent attribute-based symbology disappearance.
+
+    3.1.0 - Dropbox · OneDrive · Google Drive:
+      * NEW: DropboxClient — Dropbox API v2, Access Token, full CRUD + upload/download.
+      * NEW: OneDriveClient — Microsoft Graph API v1.0, Access Token, personal & SharePoint drives.
+      * NEW: GoogleDriveClient — Drive API v3, Access Token + optional Refresh Token auto-renewal.
+      * All three new backends use pure stdlib (http.client, json) — zero pip dependencies.
+      * Settings dialog extended: fields show/hide dynamically per selected provider.
+      * FIX: RuntimeError on drag-drop callback (layer name captured before lambda closure).
+      * FIX: GPKG style embedding now uses native QgsVectorLayer.saveStyleToDatabase API.
+
+    3.0.0 - Generic WebDAV & Qt6 Compatibility:
+      * NEW: Generic WebDAV backend (Box.com, Koofr, pCloud, Hetzner, Synology/QNAP/TrueNAS…).
+      * NEW: Qt5/Qt6 runtime shims for all renamed scoped enums in PyQt6/QGIS 4.
+      * NEW: Drag-drop vector layer → Cloud panel, auto-converts to GeoPackage with embedded style.
+      * FIX: UnicodeDecodeError on drag-drop (QGIS MIME type is UTF-16 LE, not UTF-8).
+
+    2.8.0 - Packaging Fix: corrected ZIP root folder name (ModuleNotFoundError resolved).
+    2.7.0 - QGIS Capitalization: fixed "Qgis" → "QGIS" in all UI labels.
+    2.5.0 - Nextcloud Browser Panel: dock panel with full file management (CRUD + upload/download).
+    2.4.0 - Auto-Commit & Portable GeoPackage export.
+    1.0.0 - Initial release: Commit / Rollback / Visual Diff / Merge Wizard / Timeline / LED.
+
+tags=versioning,git,collaborative,ledger,geopackage,export,autocommit,nextcloud,webdav,cloud,dropbox,onedrive,google,drive,sharepoint,box,koofr,pcloud,timeline,diff,merge
+
+category=Plugins
+icon=logoplugin.jpg
+server=False
+experimental=False
+deprecated=False

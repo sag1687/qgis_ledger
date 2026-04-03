@@ -1,0 +1,150 @@
+mar 18 15:12:57 sino-ms7c79 plasmashell[13307]: file:///usr/share/kpackage/kcms/kcm_lookandfeel/contents/ui/main.qml:93:9: QML StackView: Binding loop detected for property "implicitHeight"
+mar 18 15:12:57 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:12:58 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:12:58 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:00 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:00 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: Qt Quick Layouts: Polish loop detected. Aborting after two iterations.
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: kf.coreaddons: KPluginFactory could not create a KDecoration2::DecorationThemeProvider instance from "/usr/lib/x86_64-linux-gnu/qt5/plugins/org.kde.kdecoration2/breezedecoration.so"
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: kf.coreaddons: KPluginFactory could not create a KDecoration2::DecorationThemeProvider instance from "/usr/lib/x86_64-linux-gnu/qt5/plugins/org.kde.kdecoration2/oxygendecoration.so"
+mar 18 15:13:01 sino-ms7c79 plasmashell[13307]: Module 'org.kde.kwin.decoration' does not contain a module identifier directive - it cannot be protected from external registrations.
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: Using fontconfig file: "/home/sino/.fonts.conf"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/FormLayout.qml:283:9: QML QQuickItem* (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/FormLayout.qml:283:9: QML QQuickItem* (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredWidth"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/ScrollablePage.qml:200:9: QML MouseArea: Binding loop detected for property "implicitHeight"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/ScrollablePage.qml:200:9: QML MouseArea: Binding loop detected for property "implicitHeight"
+mar 18 15:13:03 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:04 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:04 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/OverlaySheet.qml:603:17: QML ColumnLayout: Binding loop detected for property "height"
+mar 18 15:13:04 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:05 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:05 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:06 sino-ms7c79 plasmashell[13307]: Service  org.kde.fontinst  not registered, starting "/usr/lib/kauth/libexec/fontinst"
+mar 18 15:13:06 sino-ms7c79 dbus-daemon[2633]: [session uid=1000 pid=2633] Activating service name='org.kde.fontinst' requested by ':1.319' (uid=1000 pid=13307 comm="/usr/bin/systemsettings" label="unconfined")
+mar 18 15:13:06 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:06 sino-ms7c79 dbus-daemon[2633]: [session uid=1000 pid=2633] Successfully activated service 'org.kde.fontinst'
+mar 18 15:13:08 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:08 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]: "Could not convert argument 0 at"
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]:          "onChangedEntriesChanged@file:///usr/share/kpackage/kcms/kcm_plymouth/contents/ui/main.qml:25"
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]: "Passing incompatible arguments to C++ functions from JavaScript is dangerous and deprecated."
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]: "This will throw a JavaScript TypeError in future releases of Qt!"
+mar 18 15:13:10 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:11 sino-ms7c79 plasmashell[13023]: Unable to find file for pid 13014 expected at "kcrash-metadata/13014.ini"
+mar 18 15:13:11 sino-ms7c79 plasmashell[13014]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:13:11 sino-ms7c79 plasmashell[13014]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:13:11 sino-ms7c79 plasmashell[13014]: QSocketNotifier: Invalid socket 27 and type 'Read', disabling...
+mar 18 15:13:11 sino-ms7c79 kded5[2882]: Service  ":1.316" unregistered
+mar 18 15:13:12 sino-ms7c79 plasmashell[13014]: Unable to start Dr. Konqi
+mar 18 15:13:12 sino-ms7c79 plasmashell[13014]: Re-raising signal for core dump handling.
+mar 18 15:13:13 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:13 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:13 sino-ms7c79 plasmashell[13307]: file:///usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml:46:5: QML FormLayout (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredHeight"
+mar 18 15:13:13 sino-ms7c79 plasmashell[13307]: file:///usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml:46:5: QML FormLayout (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredHeight"
+mar 18 15:13:13 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_AllowKDEAppsToRememberWindowPositions" was found but there is no setting named "AllowKDEAppsToRememberWindowPositions"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_ShadeHover" was found but there is no setting named "ShadeHover"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_ShadeHoverInterval" was found but there is no setting named "ShadeHoverInterval"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_Placement" was found but there is no setting named "Placement"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_HideUtilityWindowsForInactive" was found but there is no setting named "HideUtilityWindowsForInactive"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: kf.configwidgets: A widget named "kcfg_ActivationDesktopPolicy" was found but there is no setting named "ActivationDesktopPolicy"
+mar 18 15:13:15 sino-ms7c79 plasmashell[13307]: qml: The item SubCategoryPage_QMLTYPE_114(0x58ca094d4140) is already in the PageRow
+mar 18 15:13:16 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:17 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:17 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:17 sino-ms7c79 systemd[2603]: app-org.kde.okular-1669a269acee4ff7bda1e41d91da7646.scope: Consumed 1.516s CPU time.
+mar 18 15:13:24 sino-ms7c79 plasmashell[13307]: QQmlEngine::setContextForObject(): Object already has a QQmlContext
+mar 18 15:13:24 sino-ms7c79 plasmashell[13307]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/kirigami.2/templates/InlineMessage.qml:265:13: QML SelectableLabel: Binding loop detected for property "implicitWidth"
+mar 18 15:13:24 sino-ms7c79 plasmashell[13307]: file:///usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml:46:5: QML FormLayout (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredHeight"
+mar 18 15:13:24 sino-ms7c79 plasmashell[13307]: file:///usr/share/kpackage/kcms/kcm_workspace/contents/ui/main.qml:46:5: QML FormLayout (parent or ancestor of QQuickLayoutAttached): Binding loop detected for property "preferredHeight"
+mar 18 15:13:37 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 64939, resource id: 23113077, major code: 143 (DAMAGE), minor code: 3 (Subtract)
+mar 18 15:13:37 sino-ms7c79 plasmashell[13307]: kf.notifications: Playing audio notification failed: Destroyed
+mar 18 15:13:42 sino-ms7c79 systemd[2603]: Started app-org.kde.dolphin-b8890301858c4ec894bec08ad625311f.scope - Dolphin - Gestore dei file.
+mar 18 15:13:42 sino-ms7c79 plasmashell[10593]: file:///usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/ui/Task.qml:286: Unable to assign [undefined] to QString
+mar 18 15:13:44 sino-ms7c79 plasmashell[13620]: KCrash: crashing... crashRecursionCounter = 2
+mar 18 15:13:44 sino-ms7c79 plasmashell[13620]: KCrash: Application Name = kioslave5 path = /usr/lib/x86_64-linux-gnu/libexec/kf5 pid = 13620
+mar 18 15:13:44 sino-ms7c79 plasmashell[13620]: KCrash: Arguments: /usr/lib/x86_64-linux-gnu/libexec/kf5/kioslave5 thumbnail  local:/run/user/1000/dolphinEiBRGc.8.kioworker.socket
+mar 18 15:13:44 sino-ms7c79 plasmashell[13620]: KCrash: Attempting to start /usr/lib/x86_64-linux-gnu/libexec/drkonqi
+mar 18 15:13:44 sino-ms7c79 kded5[2882]: Registering ":1.332/StatusNotifierItem" to system tray
+mar 18 15:13:44 sino-ms7c79 plasmashell[13627]: KCrash: crashing... crashRecursionCounter = 2
+mar 18 15:13:44 sino-ms7c79 plasmashell[13627]: KCrash: Application Name = kioslave5 path = /usr/lib/x86_64-linux-gnu/libexec/kf5 pid = 13627
+mar 18 15:13:44 sino-ms7c79 plasmashell[13627]: KCrash: Arguments: /usr/lib/x86_64-linux-gnu/libexec/kf5/kioslave5 thumbnail  local:/run/user/1000/dolphinFlRAbR.9.kioworker.socket
+mar 18 15:13:44 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2528e3c0) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:13:44 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2528e3c0) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:13:44 sino-ms7c79 plasmashell[13627]: KCrash: Attempting to start /usr/lib/x86_64-linux-gnu/libexec/drkonqi
+mar 18 15:13:44 sino-ms7c79 kded5[2882]: Registering ":1.336/StatusNotifierItem" to system tray
+mar 18 15:13:46 sino-ms7c79 plasmashell[13678]: KCrash: crashing... crashRecursionCounter = 2
+mar 18 15:13:46 sino-ms7c79 plasmashell[13678]: KCrash: Application Name = kioslave5 path = /usr/lib/x86_64-linux-gnu/libexec/kf5 pid = 13678
+mar 18 15:13:46 sino-ms7c79 plasmashell[13678]: KCrash: Arguments: /usr/lib/x86_64-linux-gnu/libexec/kf5/kioslave5 thumbnail  local:/run/user/1000/dolphinQmcqzK.11.kioworker.socket
+mar 18 15:13:46 sino-ms7c79 plasmashell[13678]: KCrash: Attempting to start /usr/lib/x86_64-linux-gnu/libexec/drkonqi
+mar 18 15:13:46 sino-ms7c79 kded5[2882]: Registering ":1.343/StatusNotifierItem" to system tray
+mar 18 15:13:46 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2284fa50) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:13:46 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2284fa50) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:13:46 sino-ms7c79 plasmashell[13747]: KCrash: crashing... crashRecursionCounter = 2
+mar 18 15:13:46 sino-ms7c79 plasmashell[13747]: KCrash: Application Name = kioslave5 path = /usr/lib/x86_64-linux-gnu/libexec/kf5 pid = 13747
+mar 18 15:13:46 sino-ms7c79 plasmashell[13747]: KCrash: Arguments: /usr/lib/x86_64-linux-gnu/libexec/kf5/kioslave5 thumbnail  local:/run/user/1000/dolphinTawEUL.12.kioworker.socket
+mar 18 15:13:46 sino-ms7c79 plasmashell[13747]: KCrash: Attempting to start /usr/lib/x86_64-linux-gnu/libexec/drkonqi
+mar 18 15:13:46 sino-ms7c79 kded5[2882]: Registering ":1.347/StatusNotifierItem" to system tray
+mar 18 15:13:46 sino-ms7c79 plasmashell[13782]: KCrash: crashing... crashRecursionCounter = 2
+mar 18 15:13:46 sino-ms7c79 plasmashell[13782]: KCrash: Application Name = kioslave5 path = /usr/lib/x86_64-linux-gnu/libexec/kf5 pid = 13782
+mar 18 15:13:46 sino-ms7c79 plasmashell[13782]: KCrash: Arguments: /usr/lib/x86_64-linux-gnu/libexec/kf5/kioslave5 thumbnail  local:/run/user/1000/dolphintwczhw.13.kioworker.socket
+mar 18 15:13:46 sino-ms7c79 plasmashell[13782]: KCrash: Attempting to start /usr/lib/x86_64-linux-gnu/libexec/drkonqi
+mar 18 15:13:47 sino-ms7c79 kded5[2882]: Registering ":1.352/StatusNotifierItem" to system tray
+mar 18 15:13:47 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2453fe00) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:13:47 sino-ms7c79 plasmashell[10593]: Could not find the Plasmoid for Plasma::FrameSvgItem(0x58ce2453fe00) QQmlContext(0x58ce20ef7700) QUrl("file:///usr/share/plasma/plasmoids/org.kde.plasma.notifications/contents/ui/global/Globals.qml")
+mar 18 15:14:03 sino-ms7c79 plasmashell[10593]: file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/plasma/core/private/DefaultToolTip.qml:69:13: QML Label: Binding loop detected for property "verticalAlignment"
+mar 18 15:14:06 sino-ms7c79 systemd[2603]: app-systemsettings-dd354ce62dbd44d8a77aa912e88f1f33.scope: Consumed 6.851s CPU time.
+mar 18 15:14:24 sino-ms7c79 systemd[2603]: Started app-org.qgis.qgis-246b9148575b4cf7bf58004a821139b7.scope - QGIS Desktop - Sistema di Informazione Geografica.
+mar 18 15:14:26 sino-ms7c79 plasmashell[14057]: 2026-03-18 15:14:26,419 - QuickOSM - INFO - Plugin loaded with version : 2.5.1
+mar 18 15:14:30 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:14:30.846Z] [perf] profiling STARTED 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:14:35 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:14:35.865Z] [perf] profiling DONE 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:14:44 sino-ms7c79 plasmashell[13649]: Unable to find file for pid 13627 expected at "kcrash-metadata/13627.ini"
+mar 18 15:14:44 sino-ms7c79 plasmashell[13625]: Unable to find file for pid 13620 expected at "kcrash-metadata/13620.ini"
+mar 18 15:14:44 sino-ms7c79 plasmashell[13627]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:14:44 sino-ms7c79 plasmashell[13627]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:14:44 sino-ms7c79 kded5[2882]: Service  ":1.336" unregistered
+mar 18 15:14:44 sino-ms7c79 plasmashell[13620]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:14:44 sino-ms7c79 plasmashell[13620]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:14:44 sino-ms7c79 kded5[2882]: Service  ":1.332" unregistered
+mar 18 15:14:45 sino-ms7c79 plasmashell[13627]: Unable to start Dr. Konqi
+mar 18 15:14:45 sino-ms7c79 plasmashell[13627]: Re-raising signal for core dump handling.
+mar 18 15:14:45 sino-ms7c79 plasmashell[13620]: Unable to start Dr. Konqi
+mar 18 15:14:45 sino-ms7c79 plasmashell[13620]: Re-raising signal for core dump handling.
+mar 18 15:14:46 sino-ms7c79 plasmashell[13745]: Unable to find file for pid 13678 expected at "kcrash-metadata/13678.ini"
+mar 18 15:14:46 sino-ms7c79 plasmashell[13780]: Unable to find file for pid 13747 expected at "kcrash-metadata/13747.ini"
+mar 18 15:14:46 sino-ms7c79 plasmashell[13678]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:14:46 sino-ms7c79 plasmashell[13678]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:14:46 sino-ms7c79 plasmashell[13747]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:14:46 sino-ms7c79 plasmashell[13747]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:14:46 sino-ms7c79 kded5[2882]: Service  ":1.347" unregistered
+mar 18 15:14:46 sino-ms7c79 kded5[2882]: Service  ":1.343" unregistered
+mar 18 15:14:47 sino-ms7c79 plasmashell[13807]: Unable to find file for pid 13782 expected at "kcrash-metadata/13782.ini"
+mar 18 15:14:47 sino-ms7c79 plasmashell[13782]: QSocketNotifier: Invalid socket 7 and type 'Read', disabling...
+mar 18 15:14:47 sino-ms7c79 plasmashell[13782]: QSocketNotifier: Invalid socket 26 and type 'Read', disabling...
+mar 18 15:14:47 sino-ms7c79 kded5[2882]: Service  ":1.352" unregistered
+mar 18 15:14:47 sino-ms7c79 plasmashell[13678]: Unable to start Dr. Konqi
+mar 18 15:14:47 sino-ms7c79 plasmashell[13678]: Re-raising signal for core dump handling.
+mar 18 15:14:47 sino-ms7c79 plasmashell[13747]: Unable to start Dr. Konqi
+mar 18 15:14:47 sino-ms7c79 plasmashell[13747]: Re-raising signal for core dump handling.
+mar 18 15:14:48 sino-ms7c79 plasmashell[13782]: Unable to start Dr. Konqi
+mar 18 15:14:48 sino-ms7c79 plasmashell[13782]: Re-raising signal for core dump handling.
+mar 18 15:14:50 sino-ms7c79 systemd[2603]: app-org.kde.dolphin-b8890301858c4ec894bec08ad625311f.scope: Consumed 8.988s CPU time.
+mar 18 15:14:51 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:14:51.128Z] [perf] profiling STARTED 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:14:56 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:14:56.174Z] [perf] profiling DONE 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:15:01 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 55376, resource id: 23117820, major code: 143 (DAMAGE), minor code: 3 (Subtract)
+mar 18 15:15:11 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:15:11.433Z] [perf] profiling STARTED 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:15:13 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 64077, resource id: 23118618, major code: 143 (DAMAGE), minor code: 3 (Subtract)
+mar 18 15:15:16 sino-ms7c79 plasmashell[6802]: [main 2026-03-18T14:15:16.487Z] [perf] profiling DONE 3e3918bd-2ca7-4b87-8836-ba765b9379e5
+mar 18 15:15:37 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 13961, resource id: 23118697, major code: 143 (DAMAGE), minor code: 3 (Subtract)
+mar 18 15:16:09 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 36824, resource id: 23122148, major code: 143 (DAMAGE), minor code: 3 (Subtract)
+mar 18 15:16:42 sino-ms7c79 plasmashell[14057]: Warning: Could not find filter "*.zip *.ZIP|Pacchetti plugin "
+mar 18 15:16:49 sino-ms7c79 kwin_x11[2883]: kwin_core: XCB error: 152 (BadDamage), sequence: 64092, resource id: 23124823, major code: 143 (DAMAGE), minor code: 3 (Subtract)
