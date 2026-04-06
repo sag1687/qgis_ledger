@@ -9,6 +9,13 @@
 - **Universal Portability:** Employs dynamic relative path resolution, guaranteeing absolute operational fidelity when migrating projects across Windows, Linux, and MacOS environments.
 - **Version Agnosticism:** Fully tested and compliant with **QGIS 3.x** and ready for the next-generation **QGIS 4 (Qt6)** framework.
 
+## 🎥 Video Tutorial
+
+> 🇮🇹 **[Guarda il Video Tutorial Completo e scopri come utilizzare QGIS Ledger in azione](https://me.sinocloud.it/index.php/apps/maps/s/RfSi99EWE6iT9ng)**
+>
+> 🇬🇧 **[Watch the Full Video Tutorial and discover how to use QGIS Ledger in action](https://me.sinocloud.it/index.php/apps/maps/s/RfSi99EWE6iT9ng)**
+
+
 ---
 
 ## 🇮🇹 ITALIANO — Descrizione Architetturale
