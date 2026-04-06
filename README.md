@@ -11,7 +11,8 @@
 
 ## 🎥 Video Tutorial
 
-<video src="https://github.com/sag1687/qgis_ledger/blob/tutorial_3.2/tutorial_3-2.m4v" width="320" height="240" controls></video>
+<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/1vdnCayB#Ep91QMDOu4HBw5PdL8fm9ug87PztME-eBQ1_hNWsN08!1a" allowfullscreen allow="autoplay;"></iframe>
+
 
 > 🇮🇹 **[Guarda il Video Tutorial Completo e scopri come utilizzare QGIS Ledger in azione](https://me.sinocloud.it/index.php/apps/maps/s/RfSi99EWE6iT9ng)**
 >
