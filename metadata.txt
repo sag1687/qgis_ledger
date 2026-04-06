@@ -60,24 +60,75 @@ tracker=https://github.com/sag1687/qgis-ledger/issues
 hasProcessingProvider=no
 
 changelog=
-    3.2.0 - UI Overhaul & Stats:
-      * NEW: Unified Commit menu (Layer and Project) in a single QToolButton dropdown.
-      * NEW: Removed standalone Sync button for a cleaner toolbar workflow.
-      * NEW: Added logical database sizing (DB Size) and an explicit "Open Screenshots Dir" button inside the Plugin Info popup.
-      * NEW: Smart Screenshot Naming reflecting core ledger attributes and user data (`autocommit_` vs standard triggers).
+    ============================================================
+    ITALIANO
+    ============================================================
+
+    3.2.0 - Restyling Toolbar & Statistiche Database:
+      * NUOVO: Menu "Commit" unificato (Layer + Progetto) in un singolo pulsante QToolButton con dropdown — la toolbar è ora più pulita e compatta.
+      * NUOVO: Rimosso il pulsante "Sync" autonomo in favore di un flusso di lavoro più lineare e intuitivo.
+      * NUOVO: Statistiche del database visibili nel pannello Info: dimensione logica del DB (DB Size) esposta con formattazione leggibile.
+      * NUOVO: Pulsante "Apri Cartella Screenshot" direttamente nel popup Info Plugin per accesso rapido alle anteprime dei commit.
+      * NUOVO: Nomenclatura intelligente degli screenshot: il nome file riflette gli attributi chiave del commit (`autocommit_` vs trigger manuale), autore e timestamp.
+      * NUOVO: Modulo `ledger_browser.py` — Dock widget cloud con browser integrato, operazioni CRUD su provider remoti senza aprire browser esterni.
+      * MIGLIORATO: `ledger_nextcloud.py` completamente riscritto e potenziato (passato da ~38 KB a ~71 KB) con gestione errori avanzata, retry logic e supporto a upload multi-part.
+      * MIGLIORATO: `ledger_ledger.py` espanso con nuove API di accesso al database e metodi di utilità per la gestione delle sessioni di commit.
+      * MIGLIORATO: `ledger_settings.py` triplicato in dimensione (~8 KB → ~21 KB): pannello Impostazioni completamente ridisegnato con sezioni collassabili per ciascun provider cloud.
+      * MIGLIORATO: `ledger_plugin.py` potenziato (~93 KB → ~104 KB) con migliore gestione del ciclo di vita plugin e hook sugli eventi QGIS.
+
+    3.1.1 - Bugfix & Stabilità:
+      * FIX: Geometrie invisibili dopo un rollback — ora viene esplicitamente richiesto il ricalcolo dell'estensione del layer.
+      * FIX: Ripristino robusto degli stili vettoriali/GPKG nel database e nel file sidecar `.qml` per evitare la scomparsa delle simbologie basate su attributi.
+
+    3.1.0 - Dropbox · OneDrive · Google Drive:
+      * NUOVO: DropboxClient — API Dropbox v2, Access Token, CRUD completo + upload/download.
+      * NUOVO: OneDriveClient — Microsoft Graph API v1.0, Access Token, drive personali & SharePoint.
+      * NUOVO: GoogleDriveClient — Drive API v3, Access Token + rinnovo automatico tramite Refresh Token.
+      * Tutti e tre i backend usano esclusivamente la stdlib Python (http.client, json) — zero dipendenze pip.
+      * Dialogo Impostazioni esteso: i campi si mostrano/nascondono dinamicamente in base al provider selezionato.
+      * FIX: RuntimeError nel callback drag-drop (il nome del layer veniva catturato prima della chiusura lambda).
+      * FIX: L'embedding dello stile GPKG usa ora l'API nativa `QgsVectorLayer.saveStyleToDatabase`.
+
+    3.0.0 - WebDAV Generico & Compatibilità Qt6:
+      * NUOVO: Backend WebDAV generico (Box.com, Koofr, pCloud, Hetzner, Synology/QNAP/TrueNAS…).
+      * NUOVO: Shim di compatibilità Qt5/Qt6 per tutti gli enum rinominati in PyQt6/QGIS 4.
+      * NUOVO: Drag-drop di layer vettoriali verso il pannello Cloud — conversione automatica in GeoPackage con stile incorporato.
+      * FIX: UnicodeDecodeError nel drag-drop (il tipo MIME di QGIS è UTF-16 LE, non UTF-8).
+
+    2.8.0 - Fix Packaging: corretto il nome della cartella radice dello ZIP (risolto ModuleNotFoundError).
+    2.7.0 - Maiuscole QGIS: corretta la capitalizzazione "Qgis" → "QGIS" in tutte le label UI.
+    2.5.0 - Pannello Browser Nextcloud: dock panel con gestione file completa (CRUD + upload/download).
+    2.4.0 - Auto-Commit & Esportazione GeoPackage Portatile.
+    1.0.0 - Prima release: Commit / Rollback / Diff Visivo / Merge Wizard / Timeline / LED.
+
+    ============================================================
+    ENGLISH
+    ============================================================
+
+    3.2.0 - Toolbar Overhaul & Database Statistics:
+      * NEW: Unified "Commit" dropdown menu (Layer + Project) consolidated into a single QToolButton — toolbar is now cleaner and more compact.
+      * NEW: Removed the standalone "Sync" button in favour of a more streamlined linear workflow.
+      * NEW: Database statistics exposed inside the Plugin Info panel: logical DB size (DB Size) displayed with human-readable formatting.
+      * NEW: "Open Screenshots Directory" button directly inside the Plugin Info popup for quick access to commit previews.
+      * NEW: Smart screenshot naming: filename reflects key commit attributes (`autocommit_` vs manual trigger), author and timestamp.
+      * NEW: `ledger_browser.py` module — Cloud dock widget with an integrated file browser, enabling full CRUD operations on remote providers without opening an external browser.
+      * IMPROVED: `ledger_nextcloud.py` completely rewritten and expanded (~38 KB → ~71 KB) with advanced error handling, retry logic, and multi-part upload support.
+      * IMPROVED: `ledger_ledger.py` expanded with new database access APIs and utility methods for commit session management.
+      * IMPROVED: `ledger_settings.py` tripled in size (~8 KB → ~21 KB): fully redesigned Settings panel with collapsible sections for each cloud provider.
+      * IMPROVED: `ledger_plugin.py` significantly expanded (~93 KB → ~104 KB) with improved plugin lifecycle management and deeper QGIS event hooks.
 
     3.1.1 - Bugfix & Stability:
-      * FIX: Resolved geometry invisibility post-rollback by implicitly requesting extent recalculation.
-      * FIX: Enforced robust Vector/GPKG styles restoration into the database and .qml sidecar to prevent attribute-based symbology disappearance.
+      * FIX: Resolved geometry invisibility post-rollback by explicitly requesting layer extent recalculation.
+      * FIX: Enforced robust Vector/GPKG style restoration into both the database and the `.qml` sidecar file to prevent attribute-based symbology disappearance.
 
     3.1.0 - Dropbox · OneDrive · Google Drive:
       * NEW: DropboxClient — Dropbox API v2, Access Token, full CRUD + upload/download.
       * NEW: OneDriveClient — Microsoft Graph API v1.0, Access Token, personal & SharePoint drives.
       * NEW: GoogleDriveClient — Drive API v3, Access Token + optional Refresh Token auto-renewal.
-      * All three new backends use pure stdlib (http.client, json) — zero pip dependencies.
+      * All three new backends use pure Python stdlib (http.client, json) — zero pip dependencies.
       * Settings dialog extended: fields show/hide dynamically per selected provider.
-      * FIX: RuntimeError on drag-drop callback (layer name captured before lambda closure).
-      * FIX: GPKG style embedding now uses native QgsVectorLayer.saveStyleToDatabase API.
+      * FIX: RuntimeError in drag-drop callback (layer name captured before lambda closure).
+      * FIX: GPKG style embedding now uses the native `QgsVectorLayer.saveStyleToDatabase` API.
 
     3.0.0 - Generic WebDAV & Qt6 Compatibility:
       * NEW: Generic WebDAV backend (Box.com, Koofr, pCloud, Hetzner, Synology/QNAP/TrueNAS…).
