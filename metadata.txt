@@ -1,0 +1,87 @@
+[general]
+name=QGIS Ledger
+qgisMinimumVersion=3.0
+qgisMaximumVersion=4.99
+description=IT: Controllo di versione stile Git per progetti QGIS: diff geometrici, rollback e sincronizzazione multi-cloud. / EN: Git-like version control for QGIS projects: geometric diffs, rollback and multi-cloud sync.
+version=4.4.0
+author=Dott. Sarino Alfonso Grande
+email=sino.grande@gmail.com
+
+about=
+  ============================================================
+  ITALIANO
+  ============================================================
+  QGIS Ledger — Versioning di Livello Enterprise per QGIS
+  Sistema di tracciamento storico e sincronizzazione cloud progettato per l'integrità dei dati spaziali, senza dipendenze esterne. Ottimizzato per QGIS 3.x e QGIS 4 (Qt6).
+
+  FUNZIONALITÀ PRINCIPALI:
+  - Architettura a Snapshot: Commit atomici di layer e progetti in SQLite locale.
+  - Diff Semantico-Visuale: Analisi geometrica delle differenze tra versioni.
+  - Rollback Deterministico: Ripristino istantaneo di dati e stili.
+  - Sincronizzazione Cloud: Supporto nativo per Nextcloud, WebDAV, Dropbox, OneDrive e GDrive.
+  - Merge Wizard: Gestione conflitti in split-screen.
+
+  ============================================================
+  ENGLISH
+  ============================================================
+  QGIS Ledger — Enterprise-Grade Version Control for QGIS
+  Comprehensive historical tracking and cloud synchronization engine engineered for geospatial data integrity, operating entirely dependency-free across QGIS 3.x and QGIS 4 (Qt6).
+
+  CORE FEATURES:
+  - Snapshot Architecture: Atomic commits of layers and projects in local SQLite.
+  - Semantic Visual Diff: Geometric analysis of differences between versions.
+  - Deterministic Rollback: Instant restoration of data and styling.
+  - Cloud Synchronization: Native support for Nextcloud, WebDAV, Dropbox, OneDrive, and GDrive.
+  - Merge Wizard: Split-screen conflict resolution.
+
+homepage=https://sinocloud.it
+repository=https://github.com/sag1687/qgis_ledger
+tracker=https://github.com/sag1687/qgis_ledger/issues
+hasProcessingProvider=no
+
+changelog=
+    4.4.0: IT: Toolbar compatta di default (mostra solo l'icona del Centro Comandi); nuovo interruttore "Mostra tutti i pulsanti nella toolbar" per ripristinare la toolbar completa. Aggiunto il selettore di lingua (7 lingue) direttamente nel Centro Comandi con traduzione al volo. Tutte le nuove stringhe tradotte in tutte le lingue supportate (en, de, fr, pt-BR, zh-SG, hi-IN, ms). README aggiornato. / EN: Compact toolbar by default (shows only the Command Center icon); new "Show all buttons in the toolbar" switch to restore the full toolbar. Added the language selector (7 languages) directly inside the Command Center with on-the-fly translation. All new strings translated into every supported language (en, de, fr, pt-BR, zh-SG, hi-IN, ms). README updated.
+    4.3.0: IT: Nuova GUI "Centro Comandi": una finestra unica che raffigura tutti i comandi del plugin come grandi pulsanti raggruppati per categoria (Progetto, Versioni & Storico, Archiviazione Cloud, Automazione, Impostazioni), con le stesse icone della toolbar. Da qui si aprono direttamente tutti i comandi, incluse le impostazioni gia' presenti per cambiare cartella, database e archiviazione cloud. Accessibile dal nuovo pulsante in toolbar e dal menu Plugin; bilingue IT/EN e coerente col tema SARIAG. / EN: New "Command Center" GUI: a single window that depicts every plugin command as a large button grouped by category (Project, Versions & History, Cloud Storage, Automation, Settings), reusing the existing toolbar icons. It launches every command directly, including the existing settings to change folder, database and cloud storage. Reachable from the new toolbar button and the Plugins menu; bilingual IT/EN and consistent with the SARIAG theme.
+    4.2.2: IT: Superato il QT6 Check dello store: tutti gli enum Qt e QGIS sono ora in forma pienamente scoped nel sorgente (es. Qgis.MessageLevel.Warning, QgsWkbTypes.GeometryType.PointGeometry), verificati uno a uno sull'ambiente reale QGIS 4.2/Qt 6.10 con test di caricamento automatico. / EN: Store QT6 Check satisfied: every Qt and QGIS enum is now fully scoped in the source (e.g. Qgis.MessageLevel.Warning, QgsWkbTypes.GeometryType.PointGeometry), each one verified on a real QGIS 4.2/Qt 6.10 environment with an automated load test.
+    4.2.1: IT: Azzerate tutte le segnalazioni dell'analizzatore di sicurezza dello store (eccezioni intenzionali annotate, default dei parametri credenziali resi espliciti): la scansione Bandit ora risulta pulita come richiesto per la pubblicazione. / EN: Cleared every finding of the store security analyzer (intentional exception handlers annotated, credential parameter defaults made explicit): the Bandit scan is now clean as required for publication.
+    4.2.0: IT: Compatibilita' Qt6/QGIS 4 verificata integralmente sull'ambiente reale (QGIS 4.2, Qt 6.10): eliminati tutti gli enum in forma non-scoped, test automatico di caricamento superato; rimosso il flag supportsQt6 (non piu' riconosciuto da QGIS); nuova descrizione breve bilingue. / EN: Qt6/QGIS 4 compatibility fully verified on a real environment (QGIS 4.2, Qt 6.10): removed every non-scoped enum, automated load test passed; dropped the supportsQt6 flag (no longer recognised by QGIS); new short bilingual description.
+    4.1.0: SICUREZZA: attivata la verifica dei certificati SSL/TLS in tutti i client cloud (prima era disattivata: connessioni vulnerabili a intercettazione). Dropbox, OneDrive e Google Drive verificano sempre i certificati; per Nextcloud/WebDAV self-hosted con certificato self-signed è disponibile la nuova opzione "Verifica certificati SSL" nelle impostazioni (attiva di default). Eliminati i W503/W504 residui in plugin_hub.py; aggiunto il flag ufficiale supportsQt6. / SECURITY: SSL/TLS certificate verification enabled in every cloud client (it was previously disabled: connections were vulnerable to interception). Dropbox, OneDrive and Google Drive always verify certificates; for self-hosted Nextcloud/WebDAV with self-signed certificates the new "Verify SSL certificates" option is available in settings (on by default). Removed residual W503/W504 in plugin_hub.py; added the official supportsQt6 flag.\n
+    4.0.3: Corretto W504 (line break after binary operator) in plugin_hub.py. / Fixed W504 (line break after binary operator) in plugin_hub.py.\n
+    4.0.2: Corretto W503 (line break before binary operator) in plugin_hub.py; rimosso file nascosto .qgis_plugin_version generato erroneamente dentro il pacchetto dalla pipeline di pubblicazione; branch di default del repository rinominato in "main". / Fixed W503 (line break before binary operator) in plugin_hub.py; removed hidden .qgis_plugin_version file that the publish pipeline was mistakenly bundling into the package; repository default branch renamed to "main".\n
+    4.0.1: Rimossi file residui non utilizzati dal codice (bandiera duplicata, file di testo di sviluppo). / Removed unused legacy files not referenced by the code (duplicate flag icon, development text files).\n
+    4.0: Nuovo tema scuro slate-blue condiviso della famiglia SinoCloud (lo stesso di SARIAG), menù a tendina nella scheda Info con gli altri plugin dell'autore e link GitHub, homepage sinocloud.it, README bilingue aggiornato. / New shared SinoCloud slate-blue dark theme (same as SARIAG), Info tab drop-down with the author's other plugins and GitHub links, sinocloud.it homepage, updated bilingual README.\n
+    3.9: Nuova scheda Help multilingua nelle impostazioni, video tutorial integrato e ottimizzazione per QGIS 4.0.\n
+    3.7: Correzioni pacchetti lingua e ottimizzazione UI (dimensione icone).\n
+    3.6.0: Sicurezza, ottimizzazione codice (Flake8) e traduzione multilingua estesa.\n
+    3.5.2: Release consolidata con supporto QGIS 4 (Qt6) e Multi-Cloud completo.
+
+    ============================================================
+    ITALIANO
+    ============================================================
+    3.9 - Help & Optimization:
+      * NUOVO: Scheda Help multilingua nelle Impostazioni con guida rapida.
+      * NUOVO: Pulsante video tutorial integrato per un apprendimento rapido.
+      * MIGLIORATO: Refactoring completo del codice per maggiore stabilità.
+      * COMPATIBILITÀ: Supporto certificato per QGIS 4.0 (Qt6).
+
+    3.7 - UI & I18n:
+      * FIX: Correzione traduzioni universali e icone menu ottimizzate.
+
+    ============================================================
+    ENGLISH
+    ============================================================
+    3.9 - Help & Optimization:
+      * NEW: Multi-language Help tab in Settings with quick guide.
+      * NEW: Integrated video tutorial button for rapid learning.
+      * IMPROVED: Full code refactoring for enhanced stability.
+      * COMPATIBILITY: Certified support for QGIS 4.0 (Qt6).
+
+    3.7 - UI & I18n:
+      * FIX: Universal translation fixes and optimized menu icons.
+
+tags=versioning,git,ledger,geopackage,cloud,nextcloud,sync,timeline,diff,merge
+category=Plugins
+icon=logoplugin.jpg
+server=False
+experimental=False
+deprecated=False

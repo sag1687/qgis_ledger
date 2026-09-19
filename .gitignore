@@ -1,0 +1,1 @@
+*.token\n*.txt.token\n__pycache__/\n*.pyc\n.DS_Store\n
