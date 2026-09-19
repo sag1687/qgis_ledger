@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/badge/Version-4.4.0-1e6fb8?style=for-the-badge)]()
 [![QGIS](https://img.shields.io/badge/QGIS-%E2%89%A5%203.0-589632?style=for-the-badge&logo=qgis&logoColor=white)]()
+[![Ultimo Aggiornamento](https://img.shields.io/badge/Ultimo_Aggiornamento-11/08/2026-ff69b4?style=for-the-badge)]()
 [![License](https://img.shields.io/badge/License-GPL--2.0-bd0000?style=for-the-badge)]()
 
 **IT: Controllo di versione stile Git per progetti QGIS: diff geometrici, rollback e sincronizzazione multi-cloud. / EN: Git-like version control for QGIS projects: geometric diffs, rollback and multi-cloud sync.**
